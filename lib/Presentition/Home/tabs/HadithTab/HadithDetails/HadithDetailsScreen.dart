@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamicappgit/Config/theme/Theme.dart';
 import 'package:islamicappgit/Core/utills/assetsManager.dart';
 
 import '../HadithTab.dart';
@@ -11,9 +12,13 @@ class HadithDetails extends StatelessWidget {
     HadithItem hadith =
         ModalRoute.of(context)?.settings.arguments as HadithItem;
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(assetsmanager.LightMainBg),
+          image: AssetImage(
+            themeeee.isDark_Enabaled
+                ? assetsmanager.DarkMainBg
+                : assetsmanager.LightMainBg,
+          ),
           fit: BoxFit.fill,
         ),
       ),
@@ -29,15 +34,10 @@ class HadithDetails extends StatelessWidget {
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
               child: SingleChildScrollView(
-                child: Text(
-                  hadith.content,
-                  textAlign: TextAlign.center,
-                  textDirection: TextDirection.rtl,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall
-                      ?.copyWith(fontSize: 25),
-                ),
+                child: Text(hadith.content,
+                    textAlign: TextAlign.center,
+                    textDirection: TextDirection.rtl,
+                    style: Theme.of(context).textTheme.displayMedium),
               ),
             ),
           ),

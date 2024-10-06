@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamicappgit/Config/theme/Theme.dart';
 import 'package:islamicappgit/Core/utills/assetsManager.dart';
 
 import '../../../../../Core/utills/ColorsManager.dart';
@@ -19,9 +20,14 @@ class _QuranDetailsScreenState extends State<QuranDetailsScreen> {
     SurahArgs args = ModalRoute.of(context)?.settings.arguments as SurahArgs;
     if (Verses.isEmpty) readfile(args.index);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(assetsmanager.LightMainBg), fit: BoxFit.fill)),
+              image: AssetImage(
+                themeeee.isDark_Enabaled
+                    ? assetsmanager.DarkMainBg
+                    : assetsmanager.LightMainBg,
+              ),
+              fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(
           title: Text(args.SurahName,
