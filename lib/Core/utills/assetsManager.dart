@@ -1,6 +1,7 @@
 class assetsmanager {
   static const String LightSplashScreen = "assets/Images/SplashScreen.jpg";
   static const String LightMainBg = "assets/Images/HomeBg.png";
+  static const String DarkMainBg = "assets/Images/HomeBGDark.png";
   static const String Radio_Icon = "assets/Icons/radio.png";
   static const String Sebha_Icon = "assets/Icons/sebha.png";
   static const String Quran_Icon = "assets/Icons/quran.png";

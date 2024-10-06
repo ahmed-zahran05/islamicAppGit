@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamicappgit/Core/utills/assetsManager.dart';
 
-import '../../../../Core/utills/ColorsManager.dart';
 import 'Widgets/HadithHeader.dart';
 import 'Widgets/HadithTitleWidget.dart';
 
@@ -30,7 +29,7 @@ class _HadithTabState extends State<HadithTab> {
             flex: 3,
             child: ListView.separated(
               separatorBuilder: (context, index) => Container(
-                color: Colorsmanager.GoldColor,
+                color: Theme.of(context).dividerColor,
                 margin: EdgeInsets.symmetric(horizontal: 40),
                 height: 3,
               ),

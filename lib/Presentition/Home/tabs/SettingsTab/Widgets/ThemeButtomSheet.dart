@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islamicappgit/Core/utills/ColorsManager.dart';
 
 class ThemeButtomSheet extends StatelessWidget {
   const ThemeButtomSheet({super.key});
@@ -18,17 +17,12 @@ class ThemeButtomSheet extends StatelessWidget {
               Text("Light", style: Theme.of(context).textTheme.bodyLarge),
               const Icon(
                 Icons.check,
-                size: 30,
-                color: Colorsmanager.GoldColor,
               )
             ],
           ),
           Text(
             "Dark",
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge
-                ?.copyWith(color: Colors.black),
+            style: Theme.of(context).textTheme.labelMedium,
           ),
         ],
       ),
