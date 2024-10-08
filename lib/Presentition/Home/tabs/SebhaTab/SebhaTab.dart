@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:islamicappgit/Core/utills/StringsManager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamicappgit/Core/utills/assetsManager.dart';
+import 'package:provider/provider.dart';
 
-import '../../../../Core/utills/ColorsManager.dart';
+import '../../../../provider/SettingsProvider.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -16,6 +17,8 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
+
     return Scaffold(
       body: Column(
         children: [
@@ -24,9 +27,11 @@ class _SebhaTabState extends State<SebhaTab> {
             child: Container(
               padding: EdgeInsets.only(top: 10),
               alignment: Alignment.center,
-              child: const Image(
+              child: Image(
                 image: AssetImage(
-                  assetsmanager.BodySebhaImage,
+                  provider.currentTheme == ThemeMode.light
+                      ? assetsmanager.LightBodySebhaImage
+                      : assetsmanager.darkBodySebhaImage,
                 ),
               ),
             ),
@@ -35,7 +40,7 @@ class _SebhaTabState extends State<SebhaTab> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                stringsmanager.Sebhalabel,
+                AppLocalizations.of(context)!.sebhaCounter,
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
@@ -44,7 +49,7 @@ class _SebhaTabState extends State<SebhaTab> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Row(
@@ -54,8 +59,19 @@ class _SebhaTabState extends State<SebhaTab> {
                 alignment: Alignment.center,
                 width: 50,
                 height: 50,
-                color: Colorsmanager.GoldColor,
-                child: Text("$Count"),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).dividerColor,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 4,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Text("$Count",
+                    style: Theme.of(context).textTheme.displaySmall),
               )
             ],
           ),
@@ -70,15 +86,13 @@ class _SebhaTabState extends State<SebhaTab> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colorsmanager.GoldColor,
+                      backgroundColor: Theme.of(context).dividerColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(22),
                       ),
                       alignment: Alignment.center),
-                  child: Text(
-                    stringsmanager.SebhaButton,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                  child: Text(AppLocalizations.of(context)!.sebhaButton,
+                      style: Theme.of(context).textTheme.displaySmall),
                 ),
               ],
             ),
@@ -95,18 +109,14 @@ class _SebhaTabState extends State<SebhaTab> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colorsmanager.GoldColor,
+                      backgroundColor: Theme.of(context).dividerColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(22),
                       ),
                       alignment: Alignment.center),
                   child: Text(
-                    "Reset Counter",
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 10,
-                        ),
+                    AppLocalizations.of(context)!.resetCounter,
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
               ],

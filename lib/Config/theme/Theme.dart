@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../Core/utills/ColorsManager.dart';
 
 class themeeee {
-  static bool isDark_Enabaled = true;
   static final ThemeData MYlightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: Colorsmanager.Daarkblue),
     primaryColor: Colorsmanager.GoldColor,
@@ -52,6 +51,11 @@ class themeeee {
           fontSize: 20,
           fontWeight: FontWeight.w300,
         ),
+        displaySmall: TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+        ),
         bodyMedium: TextStyle(
           color: Colors.black,
           fontSize: 14,
@@ -75,7 +79,6 @@ class themeeee {
       backgroundColor: Colors.white,
     ),
   );
-
   static final ThemeData MYDarkTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
         seedColor: Colorsmanager.Daarkblue,
@@ -129,6 +132,11 @@ class themeeee {
           color: Colorsmanager.YellowColor,
           fontSize: 20,
           fontWeight: FontWeight.w400,
+        ),
+        displaySmall: TextStyle(
+          color: Colors.black,
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
         ),
         bodyMedium: TextStyle(
           color: Colors.black,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islamicappgit/Config/theme/Theme.dart';
-import 'package:islamicappgit/Core/utills/assetsManager.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../provider/SettingsProvider.dart';
 import '../HadithTab.dart';
 
 class HadithDetails extends StatelessWidget {
@@ -9,15 +9,15 @@ class HadithDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
+
     HadithItem hadith =
         ModalRoute.of(context)?.settings.arguments as HadithItem;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            themeeee.isDark_Enabaled
-                ? assetsmanager.DarkMainBg
-                : assetsmanager.LightMainBg,
+            provider.getBackgroundImage(),
           ),
           fit: BoxFit.fill,
         ),

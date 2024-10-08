@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:islamicappgit/Config/theme/Theme.dart';
-import 'package:islamicappgit/Core/utills/StringsManager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamicappgit/Core/utills/assetsManager.dart';
 import 'package:islamicappgit/Presentition/Home/tabs/RadioTab/RadioTab.dart';
 import 'package:islamicappgit/Presentition/Home/tabs/SebhaTab/SebhaTab.dart';
 import 'package:islamicappgit/Presentition/Home/tabs/SettingsTab/SettingsTab.dart';
+import 'package:provider/provider.dart';
 
+import '../../provider/SettingsProvider.dart';
 import 'tabs/HadithTab/HadithTab.dart';
 import 'tabs/QuranTab/QuranTab.dart';
 
@@ -27,20 +28,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            themeeee.isDark_Enabaled
-                ? assetsmanager.DarkMainBg
-                : assetsmanager.LightMainBg,
+            provider.getBackgroundImage(),
           ),
           fit: BoxFit.fill,
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(stringsmanager.HomeAppBarTitle),
+          title: Text(AppLocalizations.of(context)!.appTitle),
         ),
         body: tabs[Selectedindex],
         bottomNavigationBar: Theme(
@@ -53,22 +53,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 Selectedindex = index;
                 setState(() {});
               },
-              items: const [
+              items: [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(assetsmanager.Quran_Icon)),
-                    label: stringsmanager.Quranlabel),
+                  label: AppLocalizations.of(context)!.quranTap,
+                ),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(assetsmanager.Ahadeth_Icon)),
-                    label: stringsmanager.Ahadithlabel),
+                    label: AppLocalizations.of(context)!.hadithTap),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(assetsmanager.Sebha_Icon)),
-                    label: stringsmanager.Tasbehlabel),
+                    label: AppLocalizations.of(context)!.tasbehTap),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(assetsmanager.Radio_Icon)),
-                    label: stringsmanager.Radiolabel),
+                    label: AppLocalizations.of(context)!.radioTap),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.settings),
-                    label: stringsmanager.Settingslabel),
+                    label: AppLocalizations.of(context)!.settingsTap),
               ]),
         ),
       ),

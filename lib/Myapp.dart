@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islamicappgit/Config/theme/Theme.dart';
+import 'package:islamicappgit/provider/SettingsProvider.dart';
+import 'package:provider/provider.dart';
 
 import '../Presentition/Home/HomeScreen.dart';
 import 'Core/utills/RoutesManager.dart';
@@ -14,18 +18,30 @@ class myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
+      supportedLocales: const [
+        Locale('en', ''), // English
+        Locale('ar', ''), // Arabic
+      ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: provider.currentLocale,
       theme: themeeee.MYlightTheme,
       darkTheme: themeeee.MYDarkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: provider.currentTheme,
       debugShowCheckedModeBanner: false,
       routes: {
         RoutesManager.Homeroute: (_) => HomeScreen(),
-        RoutesManager.HadithDetailsroute: (_) => HadithDetails(),
+        RoutesManager.HadithDetailsroute: (_) => const HadithDetails(),
         RoutesManager.Splashroute: (_) => SplashScreen(),
         RoutesManager.QuaranDetailsroute: (_) => QuranDetailsScreen(),
         RoutesManager.Hadithroute: (_) => HadithTab(),
-        RoutesManager.Sebhatabroute: (_) => SebhaTab(),
+        RoutesManager.Sebhatabroute: (_) => const SebhaTab(),
       },
       initialRoute: RoutesManager.Splashroute,
     );

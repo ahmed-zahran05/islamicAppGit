@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamicappgit/Core/utills/StringsManager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeaderofRows extends StatelessWidget {
   @override
@@ -22,7 +22,7 @@ class HeaderofRows extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(4),
                 child: Text(
-                  stringsmanager.QuarnTapheader,
+                  AppLocalizations.of(context)!.chapterName,
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
@@ -41,7 +41,7 @@ class HeaderofRows extends StatelessWidget {
                 padding: const EdgeInsets.all(4),
                 child: Text(
                   textAlign: TextAlign.center,
-                  stringsmanager.NumOfVerses,
+                  AppLocalizations.of(context)!.versesNumber,
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall

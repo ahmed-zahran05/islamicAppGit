@@ -8,6 +8,8 @@ class assetsmanager {
   static const String Ahadeth_Icon = "assets/Icons/Ahadeth.png";
   static const String QuranImage = "assets/Images/quran_header_icn (1).png";
   static const String HadithImage = "assets/Images/hadith_header.png";
-  static const String BodySebhaImage = "assets/Images/body of seb7a.png";
+  static const String LightBodySebhaImage = "assets/Images/body of seb7a.png";
+  static const String darkBodySebhaImage =
+      "assets/Images/dark body of seb7a.png";
   static const String HeadSebhaImage = "assets/Images/head of seb7a.png";
 }
