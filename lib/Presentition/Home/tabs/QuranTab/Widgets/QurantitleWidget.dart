@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../Core/utills/ColorsManager.dart';
 import '../../../../../Core/utills/RoutesManager.dart';
 
 class QurantitleWidget extends StatelessWidget {
@@ -33,9 +32,9 @@ class QurantitleWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
-            const VerticalDivider(
+            VerticalDivider(
               thickness: 3,
-              color: Colorsmanager.GoldColor,
+              color: Theme.of(context).dividerColor,
             ),
             Expanded(
               child: Text(

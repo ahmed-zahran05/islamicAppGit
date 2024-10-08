@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamicappgit/Presentition/Home/tabs/SettingsTab/Widgets/ThemeButtomSheet.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../provider/SettingsProvider.dart';
 import 'Widgets/LanguageButtomSheet.dart';
 
 class Settings extends StatelessWidget {
@@ -8,6 +11,7 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     return Container(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -15,7 +19,7 @@ class Settings extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              "Theme",
+              AppLocalizations.of(context)!.theme,
               style: Theme.of(context).textTheme.labelSmall,
             ),
             const SizedBox(
@@ -33,8 +37,12 @@ class Settings extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  "Light",
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  provider.currentTheme == ThemeMode.light
+                      ? AppLocalizations.of(context)!.light
+                      : AppLocalizations.of(context)!.dark,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).dividerColor,
+                      ),
                 ),
               ),
             ),
@@ -42,7 +50,7 @@ class Settings extends StatelessWidget {
               height: 12,
             ),
             Text(
-              "Language",
+              AppLocalizations.of(context)!.language,
               style: Theme.of(context).textTheme.labelSmall,
             ),
             const SizedBox(
@@ -60,8 +68,12 @@ class Settings extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  "English",
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  provider.currentLocale == 'en'
+                      ? AppLocalizations.of(context)!.english
+                      : AppLocalizations.of(context)!.arabic,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).dividerColor,
+                      ),
                 ),
               ),
             ),
@@ -77,7 +89,6 @@ class Settings extends StatelessWidget {
       builder: (context) => ThemeButtomSheet(),
     );
   }
-
   void showLanguageBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,

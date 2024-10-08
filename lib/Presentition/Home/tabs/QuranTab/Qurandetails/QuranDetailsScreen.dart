@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islamicappgit/Core/utills/assetsManager.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../Core/utills/ColorsManager.dart';
+import '../../../../../provider/SettingsProvider.dart';
 import '../Widgets/QurantitleWidget.dart';
 import 'VerseWidget.dart';
 
@@ -16,12 +17,17 @@ class _QuranDetailsScreenState extends State<QuranDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
+
     SurahArgs args = ModalRoute.of(context)?.settings.arguments as SurahArgs;
     if (Verses.isEmpty) readfile(args.index);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(assetsmanager.LightMainBg), fit: BoxFit.fill)),
+              image: AssetImage(
+                provider.getBackgroundImage(),
+              ),
+              fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(
           title: Text(args.SurahName,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamicappgit/Core/utills/StringsManager.dart';
-
-import '../../../../../Core/utills/ColorsManager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeaderofRows extends StatelessWidget {
   @override
@@ -10,10 +8,10 @@ class HeaderofRows extends StatelessWidget {
       //padding: EdgeInsets.symmetric(vertical: 8),
       alignment: Alignment.center,
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           border: Border.symmetric(
               horizontal:
-                  BorderSide(color: Colorsmanager.GoldColor, width: 2))),
+                  BorderSide(color: Theme.of(context).dividerColor, width: 2))),
       child: IntrinsicHeight(
         child: Row(
           textDirection: TextDirection.rtl,
@@ -24,7 +22,7 @@ class HeaderofRows extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(4),
                 child: Text(
-                  stringsmanager.QuarnTapheader,
+                  AppLocalizations.of(context)!.chapterName,
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
@@ -33,9 +31,9 @@ class HeaderofRows extends StatelessWidget {
                 ),
               ),
             ),
-            const VerticalDivider(
+            VerticalDivider(
               thickness: 3,
-              color: Colorsmanager.GoldColor,
+              color: Theme.of(context).dividerColor,
             ),
             Expanded(
               flex: 2,
@@ -43,7 +41,7 @@ class HeaderofRows extends StatelessWidget {
                 padding: const EdgeInsets.all(4),
                 child: Text(
                   textAlign: TextAlign.center,
-                  stringsmanager.NumOfVerses,
+                  AppLocalizations.of(context)!.versesNumber,
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall
